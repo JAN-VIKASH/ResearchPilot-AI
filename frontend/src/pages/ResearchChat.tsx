@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useSharedChat, type ChatSessionBrief } from '../context/ChatContext';
 import api from '../services/api';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 import { 
   MessageSquare, 
   Send, 
@@ -456,7 +457,11 @@ const ResearchChat: React.FC = () => {
                       {!isUser && msg.content.startsWith('I am ResearchPilot AI') && (
                         <AlertTriangle size={18} className="text-amber-400 shrink-0 mt-0.5" />
                       )}
-                      <div className="whitespace-pre-wrap font-normal">{msg.content}</div>
+                      {isUser ? (
+                        <div className="whitespace-pre-wrap font-normal">{msg.content}</div>
+                      ) : (
+                        <MarkdownRenderer content={msg.content} />
+                      )}
                     </div>
                   </div>
                 );

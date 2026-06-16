@@ -3,6 +3,7 @@ import { Bot, Loader2, Maximize2, MessageSquare, Send, Sparkles, Trash2, X } fro
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useSharedChat } from '../context/ChatContext';
+import MarkdownRenderer from './MarkdownRenderer';
 
 const suggestions = [
   'Summarize my uploaded papers',
@@ -144,7 +145,11 @@ const FloatingAssistant: React.FC = () => {
                             : 'rounded-bl-none border-slate-750 bg-slate-850 text-slate-200'
                         }`}
                       >
-                        <div className="whitespace-pre-wrap font-light">{message.content}</div>
+                        {isUser ? (
+                          <div className="whitespace-pre-wrap font-light">{message.content}</div>
+                        ) : (
+                          <MarkdownRenderer content={message.content} />
+                        )}
                       </div>
                     </div>
                   );

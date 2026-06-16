@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { Wand2, Loader2, Copy, Check, FileText, CheckSquare, Square, Info } from 'lucide-react';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 
 interface Paper {
   id: number;
@@ -279,8 +280,8 @@ const AITools: React.FC = () => {
                   <span>Select documents and click "Generate Report" to output results.</span>
                 </div>
               ) : (
-                <div className="bg-slate-950 border border-slate-750 p-6 rounded-2xl text-slate-200 text-sm leading-relaxed whitespace-pre-wrap max-h-[550px] overflow-y-auto pr-1 text-left font-normal select-text font-sans">
-                  {output}
+                <div className="bg-slate-950 border border-slate-750 p-6 rounded-2xl text-slate-200 text-sm leading-relaxed max-h-[550px] overflow-y-auto pr-1 text-left font-normal select-text font-sans">
+                  <MarkdownRenderer content={output} />
                 </div>
               )}
             </div>

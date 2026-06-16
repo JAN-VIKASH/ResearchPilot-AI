@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useSharedChat } from '../context/ChatContext';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 import {
   FileText,
   Search,
@@ -520,8 +521,8 @@ const DocSpace: React.FC = () => {
               </div>
               <hr className="border-slate-800" />
               <div className="space-y-1">
-                <div className="bg-slate-950 border border-slate-750 p-6 rounded-2xl text-slate-200 text-sm leading-relaxed whitespace-pre-wrap max-h-[480px] overflow-y-auto pr-1 text-left font-normal select-text font-sans">
-                  {selectedDoc.content}
+                <div className="bg-slate-950 border border-slate-750 p-6 rounded-2xl text-slate-200 text-sm leading-relaxed max-h-[480px] overflow-y-auto pr-1 text-left font-normal select-text font-sans">
+                  <MarkdownRenderer content={selectedDoc.content} />
                 </div>
               </div>
               <div className="flex justify-end gap-3 pt-2">
